@@ -1,6 +1,6 @@
 import { LinearProgress } from '@mui/material';
-import PokemonPagination from 'components/table/PokemonPagination';
-import PokemonDataTable from 'components/table/PokemonDataTable';
+import PokemonPagination from 'components/PokemonPagination/PokemonPagination';
+import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonData from 'hooks/useFetchPokemonData';
 
 interface Props {
@@ -26,6 +26,9 @@ const PokemonList = ({
     {
       headerName: 'Pokemon Name',
       field: 'name',
+      css: {
+        textTransform: 'capitalize'
+      },
       isKeyField: true
     }
   ];

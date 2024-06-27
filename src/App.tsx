@@ -1,7 +1,7 @@
 import './App.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import PokemonList from 'components/pokemon/PokemonList';
-import PokemonDetails from 'components/pokemon/PokemonDetails';
+import PokemonList from 'components/PokemonList/PokemonList';
+import PokemonDetails from 'components/PokemonDetails/PokemonDetails';
 import { useState } from 'react';
 import NameUrlPair from 'types/NameUrlPair';
 

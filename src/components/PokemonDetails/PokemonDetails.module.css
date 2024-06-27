@@ -1,0 +1,8 @@
+:global(.app-container) .backToListLink {
+    float: right;
+    margin-top: 10px;
+}
+
+.pokemonDetailsHeader {
+    text-transform: capitalize;
+}

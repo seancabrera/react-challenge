@@ -11,6 +11,7 @@ interface Props {
     headerName: string;
     field: string;
     isKeyField?: boolean;
+    css?: any;
   }[];
   rowData: any[];
   onRowClick?: Function;
@@ -40,7 +41,15 @@ const PokemonDataTable = ({
         <TableHead>
           <TableRow sx={{ bgcolor: 'rgb(173, 205, 247)' }}>
             {columnDefinitions.map((columnDef) => (
-              <TableCell key={columnDef.field} sx={{ fontWeight: 'bold' }}>
+              <TableCell
+                key={columnDef.field}
+                sx={{
+                  fontWeight: 'bold',
+                  borderBottom: 'none',
+                  fontSize: '1em',
+                  textTransform: 'capitalize'
+                }}
+              >
                 {columnDef.headerName}
               </TableCell>
             ))}
@@ -58,7 +67,15 @@ const PokemonDataTable = ({
               onClick={() => onRowClick?.(row)}
             >
               {columnDefinitions.map((columnDef) => (
-                <TableCell key={columnDef.field} sx={{ fontWeight: 'bold' }}>
+                <TableCell
+                  key={columnDef.field}
+                  sx={{
+                    ...columnDef.css,
+                    fontWeight: 'bold',
+                    borderBottom: 'none',
+                    fontSize: '1em'
+                  }}
+                >
                   {row[columnDef.field]}
                 </TableCell>
               ))}

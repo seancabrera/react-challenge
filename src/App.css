@@ -2,46 +2,4 @@
     width: 40rem;
     margin: 5rem auto 0 auto;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-weight: bold;
-}
-
-thread tr {
-    background-color: rgb(173, 205, 247);
-}
-
-.app-container .back-to-list-link {
-    float: right;
-    margin-top: 10px;
-}
-
-.pagination-container {
-    height: 3rem;
-    background-color: blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(222, 235, 253);
-}
-
-.pagination-icon {
-    margin: 0.25em;
-    color: rgb(102, 108, 116);
-}
-
-.pagination-icon-enabled {
-    cursor: pointer;
-}
-
-.pagination-icon-disabled {
-    cursor: not-allowed;
-}
-
-.MuiTable-root .MuiTableCell-root {
-    font-weight: bold;
-    border-bottom: none;
-    font-size: 1em;
-}
-
-.MuiTable-root .MuiTableCell-root, .pokemon-details-header {
-    text-transform: capitalize;
 }

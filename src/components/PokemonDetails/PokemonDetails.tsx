@@ -1,7 +1,8 @@
 import { LinearProgress, Link } from '@mui/material';
-import PokemonDataTable from 'components/table/PokemonDataTable';
+import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonDetails from 'hooks/useFetchPokemonDetails';
 import NameUrlPair from 'types/NameUrlPair';
+import styles from './PokemonDetails.module.css';
 
 interface Props {
   selectedPokemon: NameUrlPair;
@@ -22,7 +23,10 @@ const PokemonDetails = ({ selectedPokemon, onBackToListClick }: Props) => {
     {
       headerName: 'Ability',
       field: 'ability',
-      isKeyField: true
+      isKeyField: true,
+      css: {
+        textTransform: 'capitalize'
+      }
     },
     {
       headerName: 'Ability Effect',
@@ -32,7 +36,7 @@ const PokemonDetails = ({ selectedPokemon, onBackToListClick }: Props) => {
 
   return (
     <>
-      <h1 className='pokemon-details-header'>
+      <h1 className={styles.pokemonDetailsHeader}>
         Selected Pokemon: {pokemonDetails.name}
       </h1>
       <PokemonDataTable
@@ -42,7 +46,7 @@ const PokemonDetails = ({ selectedPokemon, onBackToListClick }: Props) => {
 
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <Link
-        className='back-to-list-link'
+        className={styles.backToListLink}
         href='#'
         underline='hover'
         variant='body2'
