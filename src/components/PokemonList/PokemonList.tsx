@@ -2,18 +2,15 @@ import { LinearProgress } from '@mui/material';
 import PokemonPagination from 'components/PokemonPagination/PokemonPagination';
 import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonData from 'hooks/useFetchPokemonData';
+import { useContext } from 'react';
+import PageContext from 'contexts/PageContext';
 
 interface Props {
-  page: number;
   onPokemonNameClick: Function;
-  onPageNavigationClick: Function;
 }
 
-const PokemonList = ({
-  page,
-  onPokemonNameClick,
-  onPageNavigationClick
-}: Props) => {
+const PokemonList = ({ onPokemonNameClick }: Props) => {
+  const { page } = useContext(PageContext);
   const { isPending, error, data: pokemonData } = useFetchPokemonData(page);
 
   if (isPending) return <LinearProgress style={{ marginTop: '15rem' }} />;
@@ -40,11 +37,7 @@ const PokemonList = ({
         rowData={pokemonList}
         onRowClick={onPokemonNameClick}
       />
-      <PokemonPagination
-        page={page}
-        pages={numPages}
-        onPageNavigationClick={onPageNavigationClick}
-      />
+      <PokemonPagination pages={numPages} />
     </>
   );
 };

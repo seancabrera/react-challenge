@@ -2,23 +2,19 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+import { useContext } from 'react';
+import PageContext from 'contexts/PageContext';
 import styles from './PokemonPagination.module.css';
 
 interface Props {
-  page: number;
   pages: number;
-  onPageNavigationClick: Function;
 }
 
-const PokemonPagination = ({ page, pages, onPageNavigationClick }: Props) => {
-  function handlePageClick(newPage: number): void {
-    // Check for boundaries. Call onPageNavigationClick if the newPage is valid.
-    if (newPage < 1 || newPage > pages) {
-      return;
-    }
-
-    onPageNavigationClick(newPage);
-  }
+const PokemonPagination = ({ pages }: Props) => {
+  // Using a "Context" for the page allows all of the business logic for
+  // setting the page to be contained within this component, which is cleaner
+  // than calling a callbuck function further up the component tree
+  const { page, setPage } = useContext(PageContext);
 
   const prevPageDisabled = page === 1;
   const nextPageDisabled = page === pages;
@@ -29,6 +25,15 @@ const PokemonPagination = ({ page, pages, onPageNavigationClick }: Props) => {
   const nextIconsEnabledOrDisabledClass = nextPageDisabled
     ? styles.paginationIconDisabled
     : styles.paginationIconEnabled;
+
+  function handlePageClick(newPage: number): void {
+    // Check for boundaries. Call setPage if the newPage is valid.
+    if (newPage < 1 || newPage > pages) {
+      return;
+    }
+
+    setPage(newPage);
+  }
 
   return (
     <div className={styles.paginationContainer}>
