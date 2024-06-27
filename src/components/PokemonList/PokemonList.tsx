@@ -4,14 +4,13 @@ import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonData from 'hooks/useFetchPokemonData';
 import { useContext } from 'react';
 import PageContext from 'contexts/PageContext';
+import NameUrlPair from 'types/NameUrlPair';
+import { useNavigate } from 'react-router-dom';
 
-interface Props {
-  onPokemonNameClick: Function;
-}
-
-const PokemonList = ({ onPokemonNameClick }: Props) => {
+const PokemonList = () => {
   const { page } = useContext(PageContext);
   const { isPending, error, data: pokemonData } = useFetchPokemonData(page);
+  const navigate = useNavigate();
 
   if (isPending) return <LinearProgress style={{ marginTop: '15rem' }} />;
   if (error) return `An error has occurred: ${error.message}`;
@@ -30,12 +29,16 @@ const PokemonList = ({ onPokemonNameClick }: Props) => {
     }
   ];
 
+  const handlePokemonNameClick = (selectedPokemon: NameUrlPair) => {
+    navigate('/details', { state: { selectedPokemon } });
+  };
+
   return (
     <>
       <PokemonDataTable
         columnDefinitions={columnDefinitions}
         rowData={pokemonList}
-        onRowClick={onPokemonNameClick}
+        onRowClick={handlePokemonNameClick}
       />
       <PokemonPagination pages={numPages} />
     </>

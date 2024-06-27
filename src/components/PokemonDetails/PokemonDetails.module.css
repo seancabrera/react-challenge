@@ -1,6 +1,11 @@
-:global(.app-container) .backToListLink {
+.backToListLink {
     float: right;
     margin-top: 10px;
+    text-decoration: none;
+}
+
+.backToListLink:hover {
+    text-decoration: underline;
 }
 
 .pokemonDetailsHeader {

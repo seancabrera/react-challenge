@@ -1,15 +1,12 @@
-import { LinearProgress, Link } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonDetails from 'hooks/useFetchPokemonDetails';
-import NameUrlPair from 'types/NameUrlPair';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './PokemonDetails.module.css';
 
-interface Props {
-  selectedPokemon: NameUrlPair;
-  onBackToListClick: Function;
-}
+const PokemonDetails = () => {
+  const { selectedPokemon } = useLocation().state;
 
-const PokemonDetails = ({ selectedPokemon, onBackToListClick }: Props) => {
   const {
     isPending,
     isError,
@@ -44,14 +41,7 @@ const PokemonDetails = ({ selectedPokemon, onBackToListClick }: Props) => {
         rowData={pokemonDetails?.abilities ?? []}
       />
 
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <Link
-        className={styles.backToListLink}
-        href='#'
-        underline='hover'
-        variant='body2'
-        onClick={() => onBackToListClick()}
-      >
+      <Link className={styles.backToListLink} to='/'>
         Back to list view
       </Link>
     </>
