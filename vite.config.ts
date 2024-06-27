@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths(), tsconfigPaths(), svgrPlugin()],
+  plugins: [react(), viteTsconfigPaths(), svgrPlugin()],
   optimizeDeps: {
     force: true,
     esbuildOptions: {
@@ -14,9 +13,5 @@ export default defineConfig({
         '.js': 'jsx'
       }
     }
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom'
-  },
+  }
 });
