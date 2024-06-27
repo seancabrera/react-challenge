@@ -8,7 +8,9 @@ import NameUrlPair from 'types/NameUrlPair';
 const queryClient = new QueryClient();
 
 const App = (): React.ReactNode => {
-  const [selectedPokemon, setSelectedPokemon] = useState<NameUrlPair | null>(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<NameUrlPair | null>(
+    null
+  );
   const [page, setPage] = useState(1);
 
   const handlePokemonNameClick = (pokemon: NameUrlPair) => {
