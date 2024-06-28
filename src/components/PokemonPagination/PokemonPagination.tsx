@@ -11,7 +11,14 @@ interface Props {
   pages: number;
 }
 
-const PokemonPagination = ({ pages }: Props) => {
+/**
+ * This component provides a UI for pagination of the Pokemon data. Changes
+ * made to the page are set on the PageContext for other components to consume.
+ *
+ * @param {number} pages The total number of pages
+ * @returns {JSX.Element}
+ */
+const PokemonPagination = ({ pages }: Props): JSX.Element => {
   // Using a "Context" for the page allows all of the business logic for
   // setting the page to be contained within this component, which is cleaner
   // than calling a callbuck function further up the component tree

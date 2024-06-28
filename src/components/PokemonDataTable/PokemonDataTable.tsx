@@ -17,6 +17,17 @@ interface Props {
   onRowClick?: Function;
 }
 
+/**
+ * A table component that encapsulates the styling common to the tables in the
+ * app, including zebra striping and hover effect. Allows the client to specify
+ * the column definitions, row data and an optional onRowClick handler
+ *
+ * @param columnDefinitions The column definitions for the table
+ * @param rowData The row data for the table
+ * @param {Function} onRowClick Optional row click handler
+ *
+ * @returns {JSX.Element}
+ */
 const PokemonDataTable = ({
   columnDefinitions,
   rowData,

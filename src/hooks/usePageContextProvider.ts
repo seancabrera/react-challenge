@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
 
+/**
+ * Custom hook for PageContext provider
+ */
 const usePageContextProvider = () => {
   const [page, setPage] = useState(1);
 

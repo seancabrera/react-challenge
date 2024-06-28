@@ -4,6 +4,12 @@ import useFetchPokemonDetails from 'hooks/useFetchPokemonDetails';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './PokemonDetails.module.css';
 
+/**
+ * Displays the details of a selected pokemon, including its name and a list
+ * of abilities with the ability name and effect
+ *
+ * @returns {JSX.Element}
+ */
 const PokemonDetails = () => {
   const { selectedPokemon } = useLocation().state;
 
@@ -40,7 +46,6 @@ const PokemonDetails = () => {
         columnDefinitions={columnDefinitions}
         rowData={pokemonDetails?.abilities ?? []}
       />
-
       <Link className={styles.backToListLink} to='/'>
         Back to list view
       </Link>

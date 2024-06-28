@@ -1,6 +1,13 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
-const useFetchPokemonData = (page: number) => {
+/**
+ * Custom hook for fetching a list of pokemon
+ *
+ * @param {number} page  The page number for the Pokemon list
+ * @returns {Object} An object containing a list of pokemon
+ * and various query statuses (isPending, error)
+ */
+const useFetchPokemonList = (page: number) => {
   return useQuery({
     queryKey: ['pokemonList', page],
     queryFn: () =>
@@ -13,4 +20,4 @@ const useFetchPokemonData = (page: number) => {
   });
 };
 
-export default useFetchPokemonData;
+export default useFetchPokemonList;

@@ -78,7 +78,7 @@ function verifyDetailsView() {
   });
 }
 
-vi.mock('hooks/useFetchPokemonData', () => ({
+vi.mock('hooks/useFetchPokemonList', () => ({
   default: (page: number) => ({
     isPending: false,
     error: false,

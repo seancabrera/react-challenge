@@ -6,6 +6,14 @@ import {
   PokemonDetailsAbilities
 } from 'types/PokemonDetailsTypes';
 
+/**
+ * Custom hook for fetching details about a selected Pokemon. This hook returns
+ * the selected pokemon's name and a list of abilities including ability effects.
+ *
+ * @param {NameUrlPair} selectedPokemon  The name and url for the selected pokemon
+ * @returns {Object} An object containing the name and abilities for the selected
+ * pokemon and query statuses (isPending, isError)
+ */
 const useFetchPokemonDetails = (selectedPokemon: NameUrlPair) => {
   const {
     isPending: isBaseDetailsPending,
