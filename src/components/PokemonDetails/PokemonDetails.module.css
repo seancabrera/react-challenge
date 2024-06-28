@@ -1,0 +1,13 @@
+.backToListLink {
+    float: right;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.backToListLink:hover {
+    text-decoration: underline;
+}
+
+.pokemonDetailsHeader {
+    text-transform: capitalize;
+}
