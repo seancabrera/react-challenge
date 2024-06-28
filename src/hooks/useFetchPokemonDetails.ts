@@ -15,6 +15,17 @@ import {
  * pokemon and query statuses (isPending, isError)
  */
 const useFetchPokemonDetails = (selectedPokemon: NameUrlPair) => {
+  // If selectedPokemon is null, just return data=null. This can happen
+  // if the user entered the url for the details view into the browser instead of
+  // navigating to it from the landing page
+  if (!selectedPokemon) {
+    return {
+      isPending: false,
+      isError: false,
+      data: null
+    };
+  }
+
   const {
     isPending: isBaseDetailsPending,
     error: isBaseDetailsError,

@@ -1,7 +1,8 @@
 import { LinearProgress } from '@mui/material';
 import PokemonDataTable from 'components/PokemonDataTable/PokemonDataTable';
 import useFetchPokemonDetails from 'hooks/useFetchPokemonDetails';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './PokemonDetails.module.css';
 
 /**
@@ -11,7 +12,17 @@ import styles from './PokemonDetails.module.css';
  * @returns {JSX.Element}
  */
 const PokemonDetails = () => {
-  const { selectedPokemon } = useLocation().state;
+  const { selectedPokemon } = useLocation().state ?? {};
+  const navigate = useNavigate();
+
+  // If the user entered the url for the details view instead of navigating to
+  // it from the landing page, we won't have a selected pokemon. In that case,
+  // redirect back to the landing page.
+  useEffect(() => {
+    if (!selectedPokemon) {
+      navigate('/');
+    }
+  });
 
   const {
     isPending,
@@ -21,6 +32,7 @@ const PokemonDetails = () => {
 
   if (isPending) return <LinearProgress style={{ marginTop: '15rem' }} />;
   if (isError) return 'An error has occurred.';
+  if (!pokemonDetails) return ''; // This should redirect
 
   const columnDefinitions = [
     {
@@ -40,7 +52,7 @@ const PokemonDetails = () => {
   return (
     <>
       <h1 className={styles.pokemonDetailsHeader}>
-        Selected Pokemon: {pokemonDetails.name}
+        Selected Pokemon: {pokemonDetails?.name}
       </h1>
       <PokemonDataTable
         columnDefinitions={columnDefinitions}
