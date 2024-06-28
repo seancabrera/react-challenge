@@ -7,16 +7,3 @@
     background-color: rgb(222, 235, 253);
     font-weight: bold;
 }
-
-.paginationIcon {
-    margin: 0.25em;
-    color: rgb(102, 108, 116);
-}
-
-.paginationIconEnabled {
-    cursor: pointer;
-}
-
-.paginationIconDisabled {
-    cursor: not-allowed;
-}

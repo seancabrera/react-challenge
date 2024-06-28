@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import userEvent, {
+  PointerEventsCheckLevel
+} from '@testing-library/user-event';
 import App from './App';
 import '@testing-library/jest-dom';
 
@@ -154,27 +156,36 @@ describe('Pagination', () => {
     verifyPage1Data();
 
     // Triggering a click on prev page
-    const user = userEvent.setup();
-    await user.click(screen.getByTestId('ChevronLeftIcon'));
+    await userEvent.click(screen.getByTestId('ChevronLeftIcon'), {
+      pointerEventsCheck: PointerEventsCheckLevel.Never
+    });
     // should stay on page 1
     verifyPage1Data();
 
     // Triggering a click on first page
-    await user.click(screen.getByTestId('FirstPageIcon'));
+    await userEvent.click(screen.getByTestId('FirstPageIcon'), {
+      pointerEventsCheck: PointerEventsCheckLevel.Never
+    });
     // should stay on page 1
     verifyPage1Data();
 
     // Navigate to last page
-    await user.click(screen.getByTestId('LastPageIcon'));
+    await userEvent.click(screen.getByTestId('LastPageIcon'), {
+      pointerEventsCheck: PointerEventsCheckLevel.Never
+    });
     verifyPage3Data();
 
     // Triggering a click on next page
-    await user.click(screen.getByTestId('ChevronRightIcon'));
+    await userEvent.click(screen.getByTestId('ChevronRightIcon'), {
+      pointerEventsCheck: PointerEventsCheckLevel.Never
+    });
     // should stay on page 3
     verifyPage3Data();
 
     // Triggering a click on last page
-    await user.click(screen.getByTestId('LastPageIcon'));
+    await userEvent.click(screen.getByTestId('LastPageIcon'), {
+      pointerEventsCheck: PointerEventsCheckLevel.Never
+    });
     // should stay on page 3
     verifyPage3Data();
   });

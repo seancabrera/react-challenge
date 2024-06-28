@@ -3,3 +3,10 @@
     margin: 5rem auto 0 auto;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
+
+@media only screen and (max-width: 768px) {
+    .app-container {
+        width: 100%;
+        margin: 0;
+    }
+}
